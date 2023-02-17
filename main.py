@@ -12,8 +12,10 @@ options = Options()
 options.headless = True
 options.add_argument('--start-maximized')
 options.page_load_strategy = 'normal'
-
-driver = webdriver.Chrome(executable_path="./chromedriver_windows.exe", options=options)
+try:
+    driver = webdriver.Chrome(executable_path="./chromedriver_windows.exe", options=options)
+except:
+    driver = webdriver.Chrome(executable_path="./chromedriver_mac_os.exe", options=options)
 
 df_MegaFone = MegaFone(driver, update_links=False)
 MegaFone = MegaFone_final(df_MegaFone)
